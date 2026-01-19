@@ -293,11 +293,11 @@ const ResBox: FC<ResBoxProps> = memo(({
           <React.Fragment key={msg.id}>
             {msg.type === 'user' && (
               <div className="flex justify-end mb-6">
-                <div className="max-w-[85%] p-4 rounded-3xl bg-[#0000004D] border-black border font-semibold text-white shadow-md break-words">
+                <div className="max-w-[85%] p-4 rounded-3xl bg-[#0000004D] font-semibold text-white shadow-md break-words">
                   <p className="m-0 leading-relaxed font-playfair text-[0.95rem]">{msg.content}</p>
                 </div>
-                <div className="w-6 h-6 rounded-full bg-[#0000004D] border-black border flex justify-end" />
-                <div className="w-2 h-2 rounded-full bg-[#0000004D] border-black border flex justify-end" />
+                <div className="w-6 h-6 rounded-full bg-[#0000004D] flex justify-end" />
+                <div className="w-2 h-2 rounded-full bg-[#0000004D] flex justify-end" />
               </div>
             )}
             {msg.type === 'error' && (
