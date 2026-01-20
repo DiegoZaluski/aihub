@@ -95,9 +95,12 @@ const MessageInput = React.memo(
         } else if (value?.trim()) {
           onSend?.(value.trim());
           onClear?.();
+          if(textareaRef.current) {
+            textareaRef.current.style.height = 'auto';
+          }
         }
       },
-      [isGenerating, stopGeneration, value, onSend, onClear],
+      [isGenerating, stopGeneration, value, onSend, onClear, textareaRef],
     );
 
     const handleEnterKey = useCallback(
