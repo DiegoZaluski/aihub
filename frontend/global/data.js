@@ -8,12 +8,6 @@ export const modelCardsDetails = [
     fullModelName: 'Llama-3.2-3B-Instruct-Q4_K_M.gguf',
   },
   {
-    modelName: 'Mistral 7B',
-    memoryUsage: '4.5 GB RAM',
-    intelligenceLevel: 'High',
-    fullModelName: 'mistral-7b-instruct-v0.3.Q4_K_M.gguf',
-  },
-  {
     modelName: 'Qwen2.5 7B',
     memoryUsage: '4.8 GB RAM',
     intelligenceLevel: 'Very High',
@@ -62,13 +56,86 @@ export const modelCardsDetails = [
     fullModelName: 'neural-chat-7b-v3-3.Q4_K_M.gguf',
   },
   {
-    modelName: 'Openchat 3.6',
-    memoryUsage: '4.9 GB RAM',
-    intelligenceLevel: 'Very High',
-    fullModelName: 'openchat-3.6-8b-20240522.Q4_K_M.gguf',
+    modelName: 'Qwen 2.5 1.5B',
+    memoryUsage: '1.3 GB RAM',
+    intelligenceLevel: 'Ultra Fast',
+    fullModelName: 'qwen2.5-1.5b-instruct.Q4_K_M.gguf',
   },
+  {
+    modelName: 'SmolLM2 1.7B',
+    memoryUsage: '1.5 GB RAM',
+    intelligenceLevel: 'Fast',
+    fullModelName: 'smollm2-1.7b.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'CodeGeeX4 9B',
+    memoryUsage: '6.0 GB RAM',
+    intelligenceLevel: 'Code Specialist',
+    fullModelName: 'codegeex4-all-9b-Q6_K.gguf',
+  },
+  {
+    modelName: 'Mistral 7B OpenOrca',
+    memoryUsage: '6.58 GB RAM',
+    intelligenceLevel: 'Very High',
+    fullModelName: 'mistral-7b-openorca.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'Dolphin 2.6 Mistral 7B',
+    memoryUsage: '6.5 GB RAM',
+    intelligenceLevel: 'Very High',
+    fullModelName: 'dolphin-2.6-mistral-7b.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'Orca 2 7B',
+    memoryUsage: '6.3 GB RAM',
+    intelligenceLevel: 'High',
+    fullModelName: 'orca-2-7b.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'SOLAR 10.7B Instruct',
+    memoryUsage: '8.5 GB RAM',
+    intelligenceLevel: 'Maximum',
+    fullModelName: 'solar-10.7b-instruct-v1.0.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'OpenHermes 2.5 Mistral 7B',
+    memoryUsage: '6.5 GB RAM',
+    intelligenceLevel: 'Very High',
+    fullModelName: 'openhermes-2.5-mistral-7b.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'MythoMax L2 13B',
+    memoryUsage: '10.0 GB RAM',
+    intelligenceLevel: 'Maximum',
+    fullModelName: 'mythomax-l2-13b.Q5_K_M.gguf',
+  },
+  {
+    modelName: 'CodeLlama 7B Instruct',
+    memoryUsage: '6.0 GB RAM',
+    intelligenceLevel: 'Code Specialist',
+    fullModelName: 'codellama-7b-instruct.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'Phind CodeLlama 34B v2',
+    memoryUsage: '11.5 GB RAM',
+    intelligenceLevel: 'Maximum',
+    fullModelName: 'phind-codellama-34b-v2.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'Xwin-LM 7B v0.1',
+    memoryUsage: '6.3 GB RAM',
+    intelligenceLevel: 'High',
+    fullModelName: 'xwin-lm-7b-v0.1.Q4_K_M.gguf',
+  },
+  {
+    modelName: 'Chinese Alpaca 2 7B',
+    memoryUsage: '6.4 GB RAM',
+    intelligenceLevel: 'High',
+    fullModelName: 'chinese-alpaca-2-7b.Q4_K_M.gguf',
+  }
 ];
 
+// model search
 export const deepResearchModels = [
   'mistral-7b-instruct-v0.3.Q4_K_M.gguf',
   'qwen2.5-7b-instruct.Q4_K_M.gguf',

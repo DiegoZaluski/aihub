@@ -21,16 +21,6 @@
       ]
     },
     {
-      "id": "mistral-7b-instruct-v0.3.Q4_K_M.gguf",
-      "name": "Mistral 7B Instruct",
-      "filename": "mistral-7b-instruct-v0.3.Q4_K_M.gguf",
-      "size_gb": 4.1,
-      "urls": [
-        "https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/mistral-7b-instruct-v0.3.Q4_K_M.gguf",
-        "https://hf.co/TheBloke/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/mistral-7b-instruct-v0.3.Q4_K_M.gguf"
-      ]
-    },
-    {
       "id": "qwen2.5-7b-instruct.Q4_K_M.gguf",
       "name": "Qwen 2.5 7B",
       "filename": "qwen2.5-7b-instruct-q4_k_m.gguf",
@@ -103,12 +93,111 @@
       ]
     },
     {
-      "id": "openchat-3.6-8b-20240522.Q4_K_M.gguf",
-      "name": "Openchat 3.6",
-      "filename": "openchat-3.6-8b-20240522.Q4_K_M.gguf",
-      "size_gb": 4.9,
+      "id": "qwen2.5-1.5b-instruct.Q4_K_M.gguf",
+      "name": "Qwen 2.5 1.5B",
+      "filename": "qwen2.5-1.5b-instruct.Q4_K_M.gguf",
+      "size_gb": 1.3,
       "urls": [
-        "https://huggingface.co/TheBloke/openchat-3.6-8B-20240522-GGUF/resolve/main/openchat-3.6-8b-20240522.Q4_K_M.gguf"
+        "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/main/qwen2.5-1.5b-instruct.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "codegeex4-all-9b-Q6_K.gguf",
+      "name": "CodeGeeX4 9B",
+      "filename": "codegeex4-all-9b-Q6_K.gguf",
+      "size_gb": 6.0,
+      "urls": [
+        "https://huggingface.co/bartowski/codegeex4-all-9b-GGUF/resolve/main/codegeex4-all-9b-Q6_K.gguf"
+      ]
+    },
+     {
+      "id": "mistral-7b-openorca.Q4_K_M.gguf",
+      "name": "Mistral 7B OpenOrca",
+      "filename": "mistral-7b-openorca.Q4_K_M.gguf",
+      "size_gb": 4.5,
+      "urls": [
+        "https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF/resolve/main/mistral-7b-openorca.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "dolphin-2.6-mistral-7b.Q4_K_M.gguf",
+      "name": "Dolphin 2.6 Mistral 7B",
+      "filename": "dolphin-2.6-mistral-7b.Q4_K_M.gguf",
+      "size_gb": 4.5,
+      "urls": [
+        "https://huggingface.co/TheBloke/dolphin-2.6-mistral-7b-GGUF/resolve/main/dolphin-2.6-mistral-7b.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "orca-2-7b.Q4_K_M.gguf",
+      "name": "Orca 2 7B",
+      "filename": "orca-2-7b.Q4_K_M.gguf",
+      "size_gb": 4.3,
+      "urls": [
+        "https://huggingface.co/TheBloke/Orca-2-7B-GGUF/resolve/main/orca-2-7b.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "solar-10.7b-instruct-v1.0.Q4_K_M.gguf",
+      "name": "SOLAR 10.7B Instruct",
+      "filename": "solar-10.7b-instruct-v1.0.Q4_K_M.gguf",
+      "size_gb": 6.5,
+      "urls": [
+        "https://huggingface.co/TheBloke/SOLAR-10.7B-Instruct-v1.0-GGUF/resolve/main/solar-10.7b-instruct-v1.0.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "openhermes-2.5-mistral-7b.Q4_K_M.gguf",
+      "name": "OpenHermes 2.5 Mistral 7B",
+      "filename": "openhermes-2.5-mistral-7b.Q4_K_M.gguf",
+      "size_gb": 4.5,
+      "urls": [
+        "https://huggingface.co/TheBloke/OpenHermes-2.5-Mistral-7B-GGUF/resolve/main/openhermes-2.5-mistral-7b.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "mythomax-l2-13b.Q5_K_M.gguf",
+      "name": "MythoMax L2 13B",
+      "filename": "mythomax-l2-13b.Q5_K_M.gguf",
+      "size_gb": 8.0,
+      "urls": [
+        "https://huggingface.co/TheBloke/MythoMax-L2-13B-GGUF/resolve/main/mythomax-l2-13b.Q5_K_M.gguf"
+      ]
+    },
+    {
+      "id": "codellama-7b-instruct.Q4_K_M.gguf",
+      "name": "CodeLlama 7B Instruct",
+      "filename": "codellama-7b-instruct.Q4_K_M.gguf",
+      "size_gb": 4.0,
+      "urls": [
+        "https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF/resolve/main/codellama-7b-instruct.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "phind-codellama-34b-v2.Q4_K_M.gguf",
+      "name": "Phind CodeLlama 34B v2",
+      "filename": "phind-codellama-34b-v2.Q4_K_M.gguf",
+      "size_gb": 9.5,
+      "urls": [
+        "https://huggingface.co/TheBloke/Phind-CodeLlama-34B-v2-GGUF/resolve/main/phind-codellama-34b-v2.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "xwin-lm-7b-v0.1.Q4_K_M.gguf",
+      "name": "Xwin-LM 7B v0.1",
+      "filename": "xwin-lm-7b-v0.1.Q4_K_M.gguf",
+      "size_gb": 4.3,
+      "urls": [
+        "https://huggingface.co/TheBloke/Xwin-LM-7B-V0.1-GGUF/resolve/main/xwin-lm-7b-v0.1.Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": "chinese-alpaca-2-7b.Q4_K_M.gguf",
+      "name": "Chinese Alpaca 2 7B",
+      "filename": "chinese-alpaca-2-7b.Q4_K_M.gguf",
+      "size_gb": 4.4,
+      "urls": [
+        "https://huggingface.co/TheBloke/chinese-alpaca-2-7B-GGUF/resolve/main/chinese-alpaca-2-7b.Q4_K_M.gguf"
       ]
     }
   ]
