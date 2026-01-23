@@ -1,3 +1,48 @@
+/**
+ * MessageInput Component
+ * 
+ * A rich text input component for the chat interface that supports message composition,
+ * sending messages, and various input controls. It includes features like auto-resizing,
+ * keyboard shortcuts, and visual feedback during message generation.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <MessageInput
+ *   textareaRef={textareaRef}
+ *   value={message}
+ *   onChange={handleMessageChange}
+ *   placeholder="Type your message..."
+ *   onHeightAdjust={adjustHeight}
+ *   onClear={clearInput}
+ *   tooltipRef={tooltipRef}
+ *   showTooltip={showTooltip}
+ *   hideTooltip={hideTooltip}
+ *   onSend={handleSendMessage}
+ *   isGenerating={isGenerating}
+ *   stopGeneration={stopGeneration}
+ *   adaptable={true}
+ *   newWindow={false}
+ * />
+ * ```
+ * 
+ * @param {Object} props - Component props
+ * @param {React.RefObject<HTMLTextAreaElement>} props.textareaRef - Reference to the textarea element
+ * @param {string} props.value - Current input value
+ * @param {Function} props.onChange - Handler for input changes
+ * @param {string} props.placeholder - Placeholder text
+ * @param {Function} props.onHeightAdjust - Callback when input height changes
+ * @param {Function} props.onClear - Handler for clearing the input
+ * @param {React.RefObject<HTMLSpanElement>} props.tooltipRef - Reference to the tooltip element
+ * @param {Function} props.showTooltip - Function to show the tooltip
+ * @param {Function} props.hideTooltip - Function to hide the tooltip
+ * @param {Function} props.onSend - Handler for sending messages
+ * @param {boolean} props.isGenerating - Whether a message is being generated
+ * @param {Function} props.stopGeneration - Function to stop message generation
+ * @param {boolean} props.adaptable - Whether the input should adapt its layout
+ * @param {boolean} [props.newWindow=false] - Whether the input is in a new window
+ * @returns {JSX.Element} A message input component with rich features
+ */
 import React, { useCallback, useState, useEffect, RefObject } from 'react';
 import { ArrowUp, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -85,7 +130,6 @@ const MessageInput = React.memo(
       }
     }, [isGenerating]);
 
-    // Handlers
     const handleSubmitOrStop = useCallback(
       (e: React.FormEvent) => {
         e.preventDefault();
@@ -140,7 +184,7 @@ const MessageInput = React.memo(
           value={value || ''}
           onChange={handleChange}
           onKeyDown={handleEnterKey}
-          disabled={isGenerating}
+          // disabled={isGenerating}
           rows={1}
           style={{ scrollbarWidth: 'none' }}
           className={`

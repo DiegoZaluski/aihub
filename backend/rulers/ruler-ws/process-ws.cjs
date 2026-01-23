@@ -1,3 +1,73 @@
+/**
+ * WebSocket Process Manager
+ * 
+ * Manages the lifecycle of the Python WebSocket server process. Handles process
+ * spawning, monitoring, and cleanup. Includes automatic recovery, health checks,
+ * and resource management for the WebSocket server process.
+ *
+ * @module process-ws
+ * @example
+ * ```javascript
+ * const { startPythonServer, stopPythonServer, restartPythonServer } = require('./process-ws');
+ * 
+ * // Start the Python WebSocket server
+ * try {
+ *   await startPythonServer(mainWindow);
+ *   console.log('WebSocket server started successfully');
+ * } catch (error) {
+ *   console.error('Failed to start WebSocket server:', error);
+ * }
+ * 
+ * // Later, when shutting down
+ * await stopPythonServer();
+ * 
+ * // Or restart if needed
+ * await restartPythonServer(mainWindow);
+ * ```
+ * 
+ * @property {ChildProcess|null} pythonServerProcess - Reference to the spawned Python process
+ * @property {number} serverRestartCount - Number of consecutive restart attempts
+ * @property {number} MAX_SERVER_RESTARTS=3 - Maximum allowed restarts before giving up
+ * @property {number} SERVER_START_TIMEOUT=15000 - Time in ms to wait for server to start
+ * @property {Function|null} reconnectCallback - Callback for WebSocket reconnection events
+ * 
+ * @function isPythonServerRunning - Checks if server is already running
+ * @returns {Promise<boolean>} True if server is running and responsive
+ * 
+ * @function killExistingPythonServers - Cleans up any orphaned processes
+ * @returns {Promise<void>} Resolves when all processes are terminated
+ * 
+ * @function waitForServerStart - Waits for server to become available
+ * @param {number} [timeout=15000] - Maximum time to wait in milliseconds
+ * @returns {Promise<boolean>} True if server started, false on timeout
+ * 
+ * @function handleServerCrash - Implements crash recovery logic
+ * @param {Electron.BrowserWindow} mainWindow - Reference to main window for notifications
+ * @returns {Promise<void>}
+ * 
+ * @function getPythonPath - Resolves Python executable path
+ * @param {string} workingDir - Base directory to search for Python
+ * @returns {Promise<string>} Path to Python executable
+ * 
+ * @function startPythonServer - Starts the WebSocket server
+ * @param {Electron.BrowserWindow} mainWindow - Reference to main window for IPC
+ * @returns {Promise<boolean>} True if server started successfully
+ * @throws {Error} If server fails to start after retries
+ * 
+ * @function stopPythonServer - Stops the server cleanly
+ * @returns {Promise<boolean>} True if server was stopped, false if not running
+ * 
+ * @function restartPythonServer - Restarts the WebSocket server
+ * @param {Electron.BrowserWindow} mainWindow - Reference to main window
+ * @returns {Promise<boolean>} True if restart was successful
+ * 
+ * @event process:start - Emitted when server process starts
+ * @event process:exit - Emitted when server process exits
+ * @event process:error - Emitted on process error
+ * @event server:ready - Emitted when server is ready to accept connections
+ * @event server:restart - Emitted before server restart is attempted
+ * @function restartPythonServer - Restarts the server
+ */
 const { spawn, exec } = require('child_process');
 const net = require('net');
 const path = require('path');

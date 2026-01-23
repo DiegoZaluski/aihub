@@ -1,3 +1,23 @@
+/**
+ * SearchAnime Component
+ * 
+ * A reusable animated search icon component that creates an engaging visual effect.
+ * The animation simulates a search pattern, moving the search icon across the container
+ * in a scanning motion, with smooth transitions and scaling effects.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <SearchAnime 
+ *   color="#4F46E5" 
+ *   backgroundColor="rgba(79, 70, 229, 0.1)" 
+ * />
+ * ```
+ * 
+ * @param {string} [color='black'] - The color of the search icon
+ * @param {string} [backgroundColor='transparent'] - The background color of the container
+ * @returns {JSX.Element} An animated search icon component
+ */
 import React from 'react';
 import { Search } from 'lucide-react';
 

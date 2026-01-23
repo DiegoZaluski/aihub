@@ -1,3 +1,18 @@
+/**
+ * ButtonTheme Component
+ * 
+ * A theme toggle button that allows users to switch between light and dark modes.
+ * It updates the application's theme context and persists the preference.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <ButtonTheme className="ml-2" />
+ * ```
+ * 
+ * @param {string} [className=''] - Additional CSS classes to apply to the button
+ * @returns {JSX.Element} A theme toggle button with smooth transitions
+ */
 import { useContext } from 'react';
 import { AppContext } from '../../../global/AppProvider';
 

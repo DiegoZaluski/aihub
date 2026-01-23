@@ -1,15 +1,37 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
+/**
+ * Generates a unique instance ID for each Llama instance
+ * @returns {string} A unique instance ID string
+ */
+
 const generateInstanceId = () =>
   `llama-instance-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
 
+/**
+ * Custom React hook for managing interactions with a Llama language model
+ * 
+ * @returns {Object} An object containing state and methods for interacting with the Llama model:
+ * @property {Array} messages - Array of message objects with role ('user', 'assistant', 'error') and content
+ * @property {boolean} isGenerating - Whether the model is currently generating a response
+ * @property {boolean} isConnected - Whether the connection to the model is active
+ * @property {string|null} currentPromptId - The ID of the currently processing prompt, if any
+ * @property {string|null} sessionId - The current session ID for the model interaction
+ * @property {Function} sendPrompt - Sends a prompt to the model
+ * @property {Function} stopGeneration - Stops the current generation
+ * @property {Function} clearMessages - Clears all messages and resets the conversation
+ * @property {Function} clearMemory - Clears the model's memory for the current session
+ */
+
 export function useLlama() {
+  // State for managing chat messages and model status
   const [messages, setMessages] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [currentPromptId, setCurrentPromptId] = useState(null);
   const [sessionId, setSessionId] = useState(null);
 
+  // Refs for managing side effects and instance-specific data
   const messageListeners = useRef({});
   const apiAvailable = useRef(false);
   const instanceId = useRef(generateInstanceId());
@@ -17,17 +39,24 @@ export function useLlama() {
   const isGeneratingRef = useRef(false);
   const pendingPromptRef = useRef(null);
 
-  // Sync ref with state to avoid stale closures
+  // Sync ref with state to avoid stale closures in event handlers
   useEffect(() => {
     isGeneratingRef.current = isGenerating;
   }, [isGenerating]);
 
+  /**
+   * Cleans up prompt ID to instance ID mapping
+   * @param {string} promptId - The prompt ID to clean up
+   */
   const cleanupPromptMapping = useCallback((promptId) => {
     if (promptId) {
       instancePromptMap.current.delete(promptId);
     }
   }, []);
 
+  /**
+   * Resets all generation-related state
+   */
   const cleanupGenerationState = useCallback(() => {
     setIsGenerating(false);
     isGeneratingRef.current = false;
@@ -35,6 +64,10 @@ export function useLlama() {
     pendingPromptRef.current = null;
   }, []);
 
+  /**
+   * Terminates the current generation and cleans up related state
+   * @param {string} promptId - The ID of the prompt to terminate
+   */
   const terminateGeneration = useCallback(
     (promptId) => {
       cleanupPromptMapping(promptId);
@@ -47,6 +80,10 @@ export function useLlama() {
     apiAvailable.current = Boolean(window.api?.sendPrompt);
   }, []);
 
+  /**
+   * Updates the last assistant message with new token
+   * @param {string} token - The token to append to the assistant's message
+   */
   const updateAssistantMessage = useCallback((token) => {
     setMessages((prev) => {
       const lastIndex = prev.length - 1;
@@ -62,6 +99,11 @@ export function useLlama() {
     });
   }, []);
 
+  /**
+   * Sends a prompt to the Llama model for processing
+   * @param {string|Object} prompt - The prompt to send. Can be a string or an object with a prompt property
+   * @returns {Promise<void>}
+   */
   const sendPrompt = useCallback(
     async (prompt) => {
       const trimmedPrompt = prompt?.trim();
@@ -124,6 +166,10 @@ export function useLlama() {
     [isGenerating, currentPromptId, terminateGeneration],
   );
 
+  /**
+   * Stops the current generation process
+   * @returns {Promise<void>}
+   */
   const stopGeneration = useCallback(async () => {
     if (!isGenerating) return;
 
@@ -137,6 +183,10 @@ export function useLlama() {
     terminateGeneration(currentPromptId);
   }, [currentPromptId, isGenerating, terminateGeneration]);
 
+  /**
+   * Clears the model's memory for the current session
+   * @returns {Promise<void>}
+   */
   const clearMemory = useCallback(async () => {
     if (apiAvailable.current) {
       try {
@@ -147,6 +197,9 @@ export function useLlama() {
     }
   }, []);
 
+  /**
+   * Clears all messages and resets the conversation state
+   */
   const clearMessages = useCallback(() => {
     setMessages([]);
     terminateGeneration(currentPromptId);

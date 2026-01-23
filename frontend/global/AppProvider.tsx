@@ -2,6 +2,44 @@ import React, { createContext, useState } from 'react';
 import { useStorage } from '../hooks/useStorage';
 import ConfigLLMObserver from './ConfigLLMObserver';
 
+/**
+ * @typedef {Object} DownloadState
+ * @property {'checking'|'idle'|'connecting'|'downloading'|'downloaded'|'error'} status - The current status of the download
+ * @property {number} progress - Download progress (0-100)
+ * @property {string} [error] - Error message if status is 'error'
+ */
+
+/**
+ * @typedef {Object} GlobalState
+ * @property {boolean} isDark - Dark mode state
+ * @property {{name: string, avatar: string}|null} user - Current user information
+ * @property {boolean} isLoggedIn - User authentication state
+ * @property {number} cartItems - Number of items in cart
+ * @property {Record<string, DownloadState>} downloads - Active downloads state
+ * @property {string[]} downloadedModels - List of downloaded model IDs
+ * @property {string} curretModel - Currently selected model ID
+ * @property {100|200|300} searchCode - Search status code
+ * @property {boolean} thinking - Whether the system is processing/thinking
+ */
+
+/**
+ * @typedef {Object} GlobalActions
+ * @property {Function} setIsDark - Toggle dark mode
+ * @property {Function} setUser - Set current user
+ * @property {Function} setIsLoggedIn - Set authentication state
+ * @property {Function} setCartItems - Update cart item count
+ * @property {Function} setDownloadState - Update download state for a model
+ * @property {Function} setCurrentModel - Set the current active model
+ * @property {Function} getDownloadState - Get download state for a model
+ * @property {Function} addDownloadedModel - Add a model to downloaded models
+ * @property {Function} removeDownloadedModel - Remove a model from downloaded models
+ * @property {Function} addCurrentModel - Alias for setCurrentModel
+ * @property {Function} setSearchCode - Update search status code
+ * @property {Function} setThinking - Set thinking state
+ */
+
+/** @type {import('react').Context<GlobalState & GlobalActions>} */
+
 // TYPES AND INTERFACES
 type DownloadState = {
   status: 'checking' | 'idle' | 'connecting' | 'downloading' | 'downloaded' | 'error';
@@ -16,7 +54,7 @@ type GlobalState = {
   cartItems: number;
   downloads: Record<string, DownloadState>;
   downloadedModels: string[];
-  curretModel: string;
+  curretModel: string; // 'curret' written wrong :(
   searchCode: 100 | 200 | 300;
   thinking: boolean;
 };
@@ -41,7 +79,12 @@ type AppContextType = GlobalState & GlobalActions;
 // CONTEXT CREATION
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
-// PROVIDER COMPONENT
+/**
+ * AppProvider component that wraps the application with global state management
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components
+ * @returns {JSX.Element} Provider component with global state
+ */
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   // STATE MANAGEMENT - WITH THEME INITIALIZATION
   const [isDark, setIsDark] = useState<boolean>(() => {

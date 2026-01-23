@@ -1,3 +1,29 @@
+/**
+ * SystemPrompt Component
+ * 
+ * A component for managing and editing the system prompt that guides the AI's behavior.
+ * It provides a collapsible interface with a textarea for editing and sends updates to the backend.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <SystemPrompt 
+ *   prompt="You are a helpful assistant."
+ *   onChange={(value) => updatePrompt(value)}
+ *   isExpanded={isExpanded}
+ *   onToggle={toggleExpansion}
+ *   className="system-prompt"
+ * />
+ * ```
+ * 
+ * @param {Object} props - Component props
+ * @param {string} [props.prompt=''] - The current system prompt text
+ * @param {Function} [props.onChange] - Callback when the prompt is modified
+ * @param {boolean} [props.isExpanded=false] - Whether the prompt editor is expanded
+ * @param {Function} [props.onToggle] - Callback when expansion is toggled
+ * @param {string} [props.className=''] - Additional CSS classes
+ * @returns {JSX.Element} A system prompt editor with expand/collapse functionality
+ */
 import { memo, useState, useEffect, useRef } from 'react';
 import { Pen } from 'lucide-react';
 

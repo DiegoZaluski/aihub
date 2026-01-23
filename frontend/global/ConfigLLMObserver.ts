@@ -1,5 +1,13 @@
 import { useEffect, useRef } from 'react';
-import {config_model} from './global';
+import { config_model } from './global';
+
+/**
+ * Configuration observer component that syncs model configurations with a remote server.
+ * Implements debouncing to batch multiple rapid updates.
+ * 
+ * @component
+ * @returns {null} This component doesn't render anything
+ */
 
 const BASE_URL = 'http://localhost:8001/configs';
 
@@ -7,6 +15,11 @@ function ConfigLLMObserver() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const pendingConfigsRef = useRef<Map<string, config_model>>(new Map());
 
+  /**
+   * Synchronizes a single configuration with the remote server
+   * @param {config_model} config - The configuration to sync
+   * @returns {Promise<void>}
+   */
   const syncConfig = async (config: config_model) => {
     console.log('Config:', config);
     const encodedId = encodeURIComponent(config.id_model);
@@ -42,6 +55,7 @@ function ConfigLLMObserver() {
     }
   };
 
+  // Set up event listener for config updates with debouncing
   useEffect(() => {
     const handler = (e: CustomEvent<config_model>) => {
       pendingConfigsRef.current.set(e.detail.id_model, e.detail);

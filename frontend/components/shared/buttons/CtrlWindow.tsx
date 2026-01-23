@@ -1,3 +1,24 @@
+/**
+ * CtrlWindow Component
+ * 
+ * A collection of window control buttons including back, minimize, maximize, and close.
+ * Provides standard window management functionality with customizable styling.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <div className="flex space-x-2">
+ *   <BackBtn stroke="currentColor" className="p-1" />
+ *   <MinimizeBtn stroke="currentColor" className="p-1" />
+ *   <MaximizeBtn stroke="currentColor" className="p-1" />
+ *   <CloseBtn stroke="currentColor" className="p-1" />
+ * </div>
+ * ```
+ * 
+ * @typedef {Object} WindowControlsProps
+ * @property {string} stroke - The color of the button icons
+ * @property {string} [className] - Additional CSS classes for the button
+ */
 import { ArrowLeft, Minus, Square, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 

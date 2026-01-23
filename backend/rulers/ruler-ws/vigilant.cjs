@@ -1,3 +1,73 @@
+/**
+ * Model Lookout
+ * 
+ * A singleton class that monitors model configuration changes and manages model lifecycle.
+ * Automatically detects model changes, handles restarts, and maintains configuration consistency.
+ * Implements debouncing to handle rapid configuration updates efficiently.
+ *
+ * @class ModelLookout
+ * @example
+ * ```javascript
+ * // Initialize with mainWindow reference
+ * const lookout = new ModelLookout(mainWindow);
+ * 
+ * // Start monitoring for model changes
+ * lookout.start();
+ * 
+ * // Later, when shutting down
+ * lookout.stop();
+ * ```
+ * 
+ * @property {string} configPath - Path to the current model configuration
+ * @property {string|null} lastModel - Last loaded model name
+ * @property {string|null} lastHash - Hash of the last configuration
+ * @property {boolean} isProcessing - Flag to prevent concurrent processing
+ * @property {NodeJS.Timeout|null} changeTimeout - Debounce timer
+ * @property {number} debounceDelay - Debounce delay in ms (default: 5000)
+ * @property {boolean} isRunning - Monitoring state
+ * @property {fs.FSWatcher|null} watcher - File system watcher instance
+ * @property {number} retryCount - Current retry attempt count
+ * @property {number} maxRetries - Maximum retry attempts (default: 3)
+ * @property {Object} mainWindow - Reference to the Electron main window
+ * @property {Object} httpClient - Configured HTTP client for API calls
+ * 
+ * @method start - Starts monitoring for configuration changes
+ * @returns {void}
+ * 
+ * @method stop - Stops monitoring and cleans up resources
+ * @returns {void}
+ * 
+ * @method watchConfigFile - Sets up filesystem watcher
+ * @returns {void}
+ * 
+ * @method debouncedHandleConfigChange - Debounces configuration change events
+ * @returns {void}
+ * 
+ * @method checkCurrentConfig - Validates and loads current configuration
+ * @returns {Promise<void>}
+ * 
+ * @method generateConfigHash - Generates a hash for configuration comparison
+ * @param {Object} config - Configuration object
+ * @returns {string} - Hash string
+ * 
+ * @method handleConfigChange - Processes configuration file changes
+ * @returns {Promise<void>}
+ * 
+ * @method attemptConfigUpdate - Attempts to update configuration with retry logic
+ * @returns {Promise<void>}
+ * 
+ * @method waitForServerReady - Waits for servers to become ready
+ * @returns {Promise<boolean>} - True if servers are ready, false otherwise
+ * 
+ * @method restartWithServerManager - Restarts the server using server manager
+ * @returns {Promise<boolean>} - True if restart was successful, false otherwise
+ * 
+ * @method notifyHttpServer - Notifies HTTP server about operation status
+ * @param {string} operationId - Unique ID for the operation
+ * @param {boolean} success - Whether the operation was successful
+ * @param {string} [message=''] - Optional status message
+ * @returns {Promise<void>}
+ */
 const path = require('path');
 const fs = require('fs');
 const { COLORS } = require('../../../utils/ansiColors.cjs');

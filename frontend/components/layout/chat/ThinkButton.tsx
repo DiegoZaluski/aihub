@@ -1,3 +1,24 @@
+/**
+ * ThinkButton Component
+ * 
+ * A button component that toggles the 'thinking' state of the AI, allowing it to 
+ * process information more thoroughly before responding. It provides visual feedback
+ * when the thinking mode is active.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <ThinkButton 
+ *   deepSearch="enhanced"
+ *   className="think-btn"
+ * />
+ * ```
+ * 
+ * @param {Object} props - Component props
+ * @param {string} [props.deepSearch] - Optional parameter to enable deep search mode
+ * @param {string} [props.className] - Additional CSS classes for styling
+ * @returns {JSX.Element} A toggle button for AI thinking mode
+ */
 import { useContext } from 'react';
 import { useLlama } from '../../../hooks/useLlama';
 import { FaLightbulb } from 'react-icons/fa';

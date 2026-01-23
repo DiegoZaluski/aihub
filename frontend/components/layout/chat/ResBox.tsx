@@ -1,4 +1,32 @@
-// Reminder to myself: fix the HTML
+/**
+ * ResBox Component
+ * 
+ * A component for rendering and displaying chat responses with rich markdown support.
+ * It includes syntax highlighting for code blocks, copy-to-clipboard functionality,
+ * and various formatting options for a better reading experience.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <ResBox 
+ *   content={markdownContent}
+ *   className="response-box"
+ *   loading={isLoading}
+ *   error={error}
+ *   searchCode={searchCode}
+ *   thinking={isThinking}
+ * />
+ * ```
+ * 
+ * @param {Object} props - Component props
+ * @param {string} props.content - The markdown content to render
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {boolean} [props.loading] - Whether content is loading
+ * @param {string | null} [props.error] - Error message if any
+ * @param {number} [props.searchCode] - Search mode indicator (100, 200, or 300)
+ * @param {boolean} [props.thinking] - Whether the AI is thinking
+ * @returns {JSX.Element} A component that renders markdown content with syntax highlighting
+ */
 import React, { 
   memo, 
   useMemo, 

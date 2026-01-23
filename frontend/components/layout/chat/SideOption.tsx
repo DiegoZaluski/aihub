@@ -1,3 +1,17 @@
+/**
+ * SideOption Component
+ * 
+ * A collapsible sidebar component that provides additional chat options and settings.
+ * It includes model configuration, token controls, and system prompt management.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <SideOption />
+ * ```
+ * 
+ * @returns {JSX.Element} A collapsible sidebar with chat configuration options
+ */
 import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { PanelLeft } from 'lucide-react';
 import { CircularDial } from '../custom-model/CircularDial';

@@ -15,6 +15,9 @@ export function useStorage<T>(key: string, defaultValue: T) {
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
+  /**
+   * Removes the value from localStorage and resets to the default value
+   */
   function remove() {
     localStorage.removeItem(key);
     setValue(defaultValue);

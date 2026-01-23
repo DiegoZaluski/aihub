@@ -1,3 +1,19 @@
+/**
+ * SearchButton Component
+ * 
+ * A button component that toggles between different search modes (simple/deep) in the chat interface.
+ * It integrates with the application context to manage search states and model compatibility.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <SearchButton className="search-btn" />
+ * ```
+ * 
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes for styling
+ * @returns {JSX.Element | null} A search mode toggle button or null if search is not available
+ */
 import { useContext, useState } from 'react';
 import { Search } from 'lucide-react';
 import { deepResearchModels, simpleModel } from '../../../global/data';

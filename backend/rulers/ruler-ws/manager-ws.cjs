@@ -1,3 +1,66 @@
+/**
+ * WebSocket Manager
+ * 
+ * Manages WebSocket connections between the Electron app and Python backend.
+ * Handles connection state, automatic reconnection, and message routing.
+ * Provides a clean API for sending prompts and managing model interactions.
+ * Implements automatic reconnection and error handling for robust communication.
+ *
+ * @module manager-ws
+ * @example
+ * ```javascript
+ * // Initialize connection
+ * const { connectToPythonServer, sendPrompt, closeWebSocket } = require('./manager-ws');
+ * 
+ * // Connect to the WebSocket server
+ * connectToPythonServer();
+ * 
+ * // Send a prompt to the model
+ * const message = {
+ *   content: 'Hello, how are you?',
+ *   model: 'llama2',
+ *   temperature: 0.7
+ * };
+ * sendPrompt(message);
+ * 
+ * // Clean up when done
+ * closeWebSocket();
+ * ```
+ * 
+ * @property {WebSocket|null} wsClient - Active WebSocket connection instance
+ * @property {boolean} isConnecting - Connection state flag (true when attempting to connect)
+ * @property {NodeJS.Timeout|null} reconnectTimeout - Timer for reconnection attempts
+ * @property {number} reconnectAttempts - Number of reconnection attempts made
+ * @property {number} maxReconnectAttempts - Maximum number of reconnection attempts
+ * @property {number} reconnectInterval - Delay between reconnection attempts in ms
+ * 
+ * @function connectToPythonServer - Establishes WebSocket connection to the Python server
+ * @returns {void}
+ * 
+ * @function sendPrompt - Sends a prompt to the Python server for processing
+ * @param {Object} message - The message object to send
+ * @param {string} message.content - The text content of the prompt
+ * @param {string} [message.model] - Model to use for processing
+ * @param {number} [message.temperature] - Sampling temperature (0-2)
+ * @returns {void}
+ * 
+ * @function cancelPrompt - Cancels an ongoing prompt generation
+ * @param {string} promptId - ID of the prompt to cancel
+ * @returns {void}
+ * 
+ * @function clearMemory - Clears the model's conversation memory/context
+ * @returns {void}
+ * 
+ * @function closeWebSocket - Closes the WebSocket connection cleanly
+ * @param {number} [code=1000] - WebSocket close code
+ * @param {string} [reason=''] - Reason for closing
+ * @returns {void}
+ * 
+ * @event message - Fired when a message is received from the server
+ * @event open - Fired when the WebSocket connection is established
+ * @event close - Fired when the WebSocket connection is closed
+ * @event error - Fired when a WebSocket error occurs
+ */
 const WebSocket = require('ws');
 const { v4: uuidv4 } = require('uuid');
 const { COLORS } = require('../../../utils/ansiColors.cjs');

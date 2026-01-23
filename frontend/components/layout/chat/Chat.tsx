@@ -1,3 +1,23 @@
+/**
+ * Chat Component
+ * 
+ * The main chat interface component that handles user interactions and displays messages.
+ * It includes message input, response display, and various chat controls.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <Chat 
+ *   adaptable={true}
+ *   newWindow={false}
+ * />
+ * ```
+ * 
+ * @param {Object} props - Component props
+ * @param {boolean} props.adaptable - Whether the chat should adapt its layout
+ * @param {boolean} [props.newWindow=false] - Whether the chat is in a new window
+ * @returns {JSX.Element} The chat interface component
+ */
 import React, { useRef, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import MessageInput from './MessageInput';
@@ -28,7 +48,7 @@ const useAutoResize = () => {
   const adjustHeight = () => {
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = 'auto';
+      // textarea.style.height = 'auto';
       textarea.style.height = `${textarea.scrollHeight}px`;
     }
   };

@@ -1,4 +1,12 @@
-const { BrowserWindow, ipcMain } = require('electron');
+/**
+ * Control Window Module
+ * 
+ * Manages the creation and lifecycle of a secondary control window in the Electron application.
+ * This window serves as an overlay control panel that stays on top of other windows.
+ * @module ControlWindow
+ */
+
+const { BrowserWindow} = require('electron');
 const path = require('path');
 const fs = require('fs');
 

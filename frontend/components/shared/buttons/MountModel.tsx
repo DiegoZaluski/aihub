@@ -1,3 +1,25 @@
+/**
+ * MountModel Component
+ * 
+ * A button component that handles the mounting and unmounting of 3D models.
+ * It provides visual feedback during the loading process and error states.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <MountModel 
+ *   modelName="example-model"
+ *   className="mt-4"
+ *   testMode={false}
+ * />
+ * ```
+ * 
+ * @param {Object} props - The component props
+ * @param {string} props.modelName - The name of the model to be mounted
+ * @param {string} [props.className=''] - Additional CSS classes for the button
+ * @param {boolean} [props.testMode=false] - Enable test mode for development
+ * @returns {JSX.Element} A button that controls model mounting with loading states
+ */
 import { useState, useEffect, useContext } from 'react';
 import { Orbit, Check, X } from 'lucide-react';
 import { useStorage } from '../../../hooks/useStorage';

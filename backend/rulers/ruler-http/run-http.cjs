@@ -1,3 +1,21 @@
+/**
+ * A Node.js module that manages the lifecycle of a Python HTTP server using Uvicorn.
+ * It handles process spawning, error handling, and provides a clean interface for
+ * starting and stopping the server.
+ *
+ * @module run-http
+ * @example
+ * ```javascript
+ * const httpRunner = new HTTPRun();
+ * await httpRunner.startHTTP();
+ * // Server is now running on http://0.0.0.0:8001
+ * ```
+ * 
+ * @class HTTPRun
+ * @property {ChildProcess|null} httpProcess - Reference to the spawned HTTP server process
+ * @method startHTTP - Starts the HTTP server
+ * @method stopHTTP - Stops the HTTP server
+ */
 const { spawn } = require('child_process');
 const path = require('path');
 

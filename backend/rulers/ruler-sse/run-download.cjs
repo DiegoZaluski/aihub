@@ -1,3 +1,42 @@
+/**
+ * Model Download Server
+ * 
+ * A robust server manager for handling AI model downloads with automatic recovery,
+ * health monitoring, and configurable logging. It manages a Python subprocess that
+ * handles the actual model downloads using Server-Sent Events (SSE).
+ *
+ * @module run-download
+ * @example
+ * ```javascript
+ * const downloadManager = new ModelDownloadServerManager({
+ *   port: 8080,
+ *   logLevel: 'info',
+ *   autoRestart: true,
+ *   maxRestarts: 3
+ * });
+ * 
+ * // Start the download server
+ * await downloadManager.start();
+ * 
+ * // Download a model
+ * await downloadManager.downloadModel('model-name');
+ * 
+ * // Stop the server when done
+ * await downloadManager.stop();
+ * ```
+ * 
+ * @class ModelDownloadServerManager
+ * @property {Object} options - Configuration options
+ * @property {string} options.pythonPath - Path to Python environment (default: 'scry_pkg')
+ * @property {string} options.scriptPath - Path to download script
+ * @property {string} options.host - Server host (default: '127.0.0.1')
+ * @property {number} options.port - Server port (default: 8080)
+ * @property {number} options.timeout - Request timeout in ms (default: 90000)
+ * @property {boolean} options.autoRestart - Auto-restart on failure (default: true)
+ * @property {number} options.maxRestarts - Maximum restart attempts (default: 3)
+ * @property {number} options.restartDelay - Delay between restarts in ms (default: 5000)
+ * @property {string} options.logLevel - Logging level (default: 'info')
+ */
 const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
