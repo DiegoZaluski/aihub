@@ -1,6 +1,6 @@
 /**
  * ButtonI18n Component
- * 
+ **
  * A language selector button that allows users to switch between different languages.
  * It displays a dropdown with available languages and updates the application's i18n configuration.
  * 
@@ -13,8 +13,9 @@
  * @param {string} [className] - Additional CSS classes to apply to the button
  * @returns {JSX.Element} A language selector button with dropdown functionality
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AppContext } from '../../../global/AppProvider';
 
 interface Language {
   id: string;
@@ -22,8 +23,8 @@ interface Language {
 
 const ButtonI18n = ({ className }: { className?: string }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [language, setLanguage] = useState<string>('en');
-
+  // const [language, setLanguage] = useState<string>('en');
+  const { language, setLanguage } = useContext(AppContext);
   const { i18n } = useTranslation();
 
   const languages: Language[] = [

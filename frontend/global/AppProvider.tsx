@@ -57,6 +57,7 @@ type GlobalState = {
   curretModel: string; // 'curret' written wrong :(
   searchCode: 100 | 200 | 300;
   thinking: boolean;
+  language: string;
 };
 
 interface GlobalActions {
@@ -72,6 +73,7 @@ interface GlobalActions {
   addCurrentModel: (modelId: string) => void;
   setSearchCode: (code: 100 | 200 | 300) => void;
   setThinking: (thinking: boolean) => void;
+  setLanguage: (language: string) => void;
 }
 
 type AppContextType = GlobalState & GlobalActions;
@@ -102,6 +104,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [curretModel, setCurrentModel] = useStorage('current-model', ''); // '' default, substitute in production
   const [searchCode, setSearchCode] = useState<100 | 200 | 300>(100);
   const [thinking, setThinking] = useState<boolean>(false);
+  const [language, setLanguage] = useState<string>('en'); // here
 
   const setDownloadState = (modelId: string, state: DownloadState) => {
     setDownloads((prev) => ({ ...prev, [modelId]: state }));
@@ -151,6 +154,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     addCurrentModel,
     setSearchCode,
     setThinking,
+    language,
+    setLanguage,
   };
 
   return (
