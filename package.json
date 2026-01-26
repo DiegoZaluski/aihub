@@ -16,7 +16,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "@eslint/js": "^2.0.0",
     "@types/electron-is-dev": "^0.3.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.37",
@@ -30,7 +29,6 @@
     "concurrently": "^9.1.2",
     "electron": "^38.3.0",
     "electron-builder": "^24.9.1",
-    "eslint": "^8.50.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
@@ -45,6 +43,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.32.0",
+    "@huggingface/hub": "^2.7.2",
     "i18next": "^25.3.4",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-http-backend": "^3.0.2",
@@ -66,7 +65,7 @@
   "description": "huglab",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DiegoZaluski/huglab"
+    "url": "git+https://github.com/DiegoZaluski/huglab.git"
   },
   "keywords": [
     "ai",
@@ -80,5 +79,7 @@
   },
   "overrides": {
     "prismjs": "^1.30.0"
-  }
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/DiegoZaluski/huglab#readme"
 }
