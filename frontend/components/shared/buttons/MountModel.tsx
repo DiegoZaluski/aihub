@@ -37,7 +37,7 @@ const colors = {
   success: '',
   error: 'text-err',
   loading: 'bg-gray-400 cursor-not-allowed',
-  textInit: 'text-white',
+  textInit: 'text-card',
   icons: 'white',
 };
 

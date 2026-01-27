@@ -40,7 +40,7 @@ function HeaderTabs() {
         <div className={STYLES.tabsContainer}>
           {headerTabsContent.map((name, index) => (
             <Link to={opChange(index)}>
-              <button
+              {/* <button
                 key={`tab-${index}-${name.toLowerCase().replace(/\s+/g, '-')}`}
                 className={`${STYLES.tab} no-drag-handle`}
                 aria-label={`Acessar ${name}`}
@@ -57,7 +57,7 @@ function HeaderTabs() {
                     {word}
                   </span>
                 ))}
-              </button>
+              </button> */} {/*temporary*/}
           </Link>
           ))}
         </div>

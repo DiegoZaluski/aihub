@@ -4,7 +4,7 @@ import { Download } from '../../shared/download/Download';
 import DownloadProgress from '../../shared/download/DownloadProgress';
 import { MountModel } from '../../shared/buttons/MountModel';
 const COLORS = {
-  text: 'text-white',
+  text: 'text-card',
 } as const;
 
 interface BottomCardProps {
@@ -45,7 +45,7 @@ function BottomCard({ item, index, icon, uncensored = false  }: BottomCardProps)
         className={`
         w-full 
         h-full 
-        ${uncensored ? 'bg-black' : 'bg-card '}
+        ${uncensored ? 'bg-black' : 'bg-card' }
         rounded-2xl p-6 
         space-y-3 
         flex 

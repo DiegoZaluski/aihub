@@ -2,18 +2,21 @@ import { Download as DownloadIcon, X, Check, AlertCircle } from 'lucide-react';
 import { useState, useEffect, useContext, useRef } from 'react';
 import { AppContext } from '../../../global/AppProvider';
 
+
 // CONSTANTS: Color mapping for consistent styling across the component
 const COLORS = {
-  BORDER_DEFAULT: 'border-white',
+  BORDER_DEFAULT: 'border-download',
   BORDER_ERROR: 'border-red-500/50',
-  ICON_DEFAULT: 'text-current',
+  ICON_DEFAULT: 'text-card',
   BUTTON_HOVER: 'hover:bg-black/10',
   DISABLED_OPACITY: 'cursor-not-allowed opacity-50',
+  BW: () => document.documentElement.getAttribute('data-theme') === 'dark' ? '#8f8f86' : 'white',
 } as const;
 
 interface DownloadButtonProps {
   modelId: string;
   className?: string;
+
 }
 
 type DownloadStatus = 'checking' | 'idle' | 'connecting' | 'downloading' | 'downloaded' | 'error';
@@ -90,13 +93,14 @@ export const Download = ({ modelId, className = '' }: DownloadButtonProps) => {
 
   // HELPER: Returns appropriate icon based on current download status
   const getIcon = (): JSX.Element => {
-    if (status === 'downloaded') return <Check stroke={'white'} className="w-4 h-4 text-current" />;
+    
+    if (status === 'downloaded') return <Check stroke={COLORS.BW()} className="w-4 h-4 text-current" />;
     if (status === 'downloading' || status === 'connecting')
       return <X className="w-4 h-4" stroke="white" />;
     if (status === 'error') return <AlertCircle className="w-4 h-4" />;
     if (status === 'checking')
-      return <DownloadIcon stroke={'white'} className="w-4 h-4 animate-pulse" />;
-    return <DownloadIcon stroke={'white'} className="w-4 h-4 text-current" />;
+      return <DownloadIcon stroke={COLORS.BW()} className="w-4 h-4 animate-pulse" />;
+    return <DownloadIcon stroke={COLORS.BW()} className="w-4 h-4 text-current" />;
   };
 
   // EFFECT: Syncs component state with global app state

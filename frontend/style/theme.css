@@ -2,6 +2,8 @@
   --bg-primary: var(--p-50);
   --bg-chat: var(--blue-900);
   --bg-card: var(--blue-900);
+  --text-card: var(--n-100);
+  
 }
 
 /* DARK THEME */
@@ -14,13 +16,13 @@
   --bg-surface: var(--n-900);
   --bg-surface-hover: var(--c-100);
   --bg-surface-active: var(--c-200);
-  --bg-card: var(--pur-primary);
+  --bg-card: var(--b-100);
 
+  --text-card: var(--b-800);
   --text-primary: var(--n-50);
   --text-secondary: var(--n-200);
   --text-tertiary: var(--n-300);
   --text-disabled: var(--n-500);
-
   --border-primary: var(--n-900);
   --border-secondary: var(--n-600);
   --border-light: var(--n-500);
@@ -37,6 +39,7 @@
   --accent-light: var(--c-100);
   --accent-cream: var(--c-400);
 }
+
 /*dark*/
 [data-theme='dark'] .bg-chat {
   background-color: var(--bg-chat);
@@ -47,7 +50,7 @@
 [data-theme='dark'] .dark-bg-secondary {
   background-color: var(--bg-secondary);
 }
-[data-theme='dark'] .bg-card {
+[data-theme='dark'] .bg-card { /*here*/
   background-color: var(--bg-card);
 }
 [data-theme='dark'] .dark-bg-tertiary {
@@ -75,9 +78,6 @@
 }
 [data-theme='dark'] .dark-text-tertiary {
   color: var(--text-tertiary);
-}
-[data-theme='dark'] .dark-text-disabled {
-  color: var(--text-disabled);
 }
 
 /* BORDERS */
@@ -154,4 +154,12 @@
 }
 .bg-input {
   background-color: var(--blue-900);
+}
+
+.text-card {
+  color: var(--text-card);
+}
+
+.border-download {
+  border-color: var(--text-card);
 }

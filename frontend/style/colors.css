@@ -166,6 +166,12 @@
 .bg-p-50 {
   background-color: var(--p-50);
 }
+
+/* BLUE*/
+
+.bg-bl-900 {
+  background-color: var(--blue-900);
+}
 /* TEXT COLOR CLASSES */
 .text-n-50 {
   color: var(--n-50);
