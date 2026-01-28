@@ -2,7 +2,7 @@
 import sys
 import json
 from pathlib import Path
-from scry_pkg.utils import setup_logging
+from action_zone.utils import setup_logging
 
 # LOGGER CONFIGURATION
 logger = setup_logging('WEBSOCKET_Server')
@@ -36,8 +36,8 @@ def load_config():
         raise ValueError("model_name not found in JSON")
     
     # PATH IS SIMILAR TO YOUR EXAMPLE
-    model_path = f"../llama.cpp/models/{model_name}" if sys.platform == 'linux' else str(Path(__file__).resolve().parent.parent.parent.parent.parent / "llama.cpp" / "models" / model_name) 
-    
+    base_dir = Path(__file__).resolve().parent.parent.parent.parent.parent
+    model_path = str(base_dir / "llama.cpp" / "models" / model_name)    
     # GET THE CORRECT FORMAT
     chat_format = MODEL_FORMATS.get(model_name, "chatml")
     

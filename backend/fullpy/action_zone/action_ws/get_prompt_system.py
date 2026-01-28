@@ -1,4 +1,4 @@
-from scry_pkg.scry_ws import PROMPT_SYSTEM_PATH
+from action_zone.action_ws import PROMPT_SYSTEM_PATH
 def get_prompt_system(prompt): 
     try:
         with open(prompt, "r", encoding="utf-8") as f:

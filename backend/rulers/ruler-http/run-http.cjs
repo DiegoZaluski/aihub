@@ -31,7 +31,7 @@ class HTTPRun {
       ? path.join(__dirname, '..', '..', 'fullpy', 'venv', 'scripts', 'python.exe')
       : path.join(__dirname, '..', '..', 'fullpy', 'venv', 'bin', 'python3'); 
       
-      const cwd = path.join(__dirname, '..', '..','fullpy', 'scry_pkg', 'scry_http');
+      const cwd = path.join(__dirname, '..', '..','fullpy', 'action_zone', 'action_http');
 
       // PROCESS SPAWN: Start Uvicorn server with specific configuration
       this.httpProcess = spawn(

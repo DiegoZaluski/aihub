@@ -15,7 +15,7 @@ const startSSEServer = async () => {
 
     console.log(COLORS.CYAN + 'Starting SSE Download Server...' + COLORS.RESET);
     const rootDir = path.join(__dirname, '..', '..');
-    const scriptPath = path.join(rootDir, 'backend', 'fullpy', 'scry_pkg', 'scry_sse', 'download_model.py');
+    const scriptPath = path.join(rootDir, 'backend', 'fullpy', 'action_zone', 'action_sse', 'download_model.py');
     const pythonPath = process.platform === 'win32' 
       ? path.join(rootDir, 'backend', 'fullpy', 'venv', 'Scripts', 'python.exe')
       : path.join(rootDir, 'backend', 'fullpy', 'venv', 'bin', 'python');

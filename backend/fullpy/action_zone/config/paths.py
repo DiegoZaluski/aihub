@@ -1,7 +1,7 @@
 from pathlib import Path
-from scry_pkg.utils import  setup_logging
+from action_zone.utils import setup_logging
 
-logger =  setup_logging("scry_pkg.config.paths")
+logger =  setup_logging("action_zone.config.paths")
 
 # scry_http
 def get_project_root() -> Path:

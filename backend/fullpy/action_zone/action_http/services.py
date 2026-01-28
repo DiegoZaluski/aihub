@@ -1,5 +1,5 @@
-from scry_pkg.scry_http import logger
-from scry_pkg.config.paths import CONFIG_FILE, READONLY_MODELS_DIR
+from action_zone.action_http import logger
+from action_zone.config.paths import CONFIG_FILE, READONLY_MODELS_DIR
 import aiofiles
 import json
 from itertools import chain

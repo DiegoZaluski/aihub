@@ -263,7 +263,7 @@ async function startPythonServer(mainWindow) {
     console.log('Working directory:', workingDir);
 
     const pythonPath = getPythonPath(workingDir);
-    const serverPath = path.join(workingDir, 'fullpy', 'scry_pkg', 'scry_ws', 'call_llama.cpp.py');
+    const serverPath = path.join(workingDir, 'fullpy', 'action_zone', 'action_ws', 'call_llama.cpp.py');
     console.log('Server path:', serverPath);
 
     if (!fs.existsSync(serverPath)) {

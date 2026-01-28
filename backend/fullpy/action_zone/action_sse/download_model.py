@@ -10,9 +10,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from typing import AsyncGenerator, Optional
 from fastapi.responses import StreamingResponse
-from scry_pkg.config.paths import possible_paths
+from action_zone.config.paths import possible_paths
 from fastapi.middleware.cors import CORSMiddleware
-from scry_pkg.scry_sse import logger, FALLBACK_PORTS_SSE
+from action_zone.action_sse import logger, FALLBACK_PORTS_SSE
 
 def which_os(posix, windows):
     """

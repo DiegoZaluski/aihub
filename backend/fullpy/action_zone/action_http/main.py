@@ -1,4 +1,4 @@
-from scry_pkg.scry_http import logger, FALLBACK_PORTS_HTTP
+from action_zone.action_http import logger, FALLBACK_PORTS_HTTP
 from app import app
 import uvicorn
 import socket

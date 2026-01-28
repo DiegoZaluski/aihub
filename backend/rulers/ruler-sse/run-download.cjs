@@ -27,7 +27,7 @@
  * 
  * @class ModelDownloadServerManager
  * @property {Object} options - Configuration options
- * @property {string} options.pythonPath - Path to Python environment (default: 'scry_pkg')
+ * @property {string} options.pythonPath - Path to Python environment (default: 'action_zone')
  * @property {string} options.scriptPath - Path to download script
  * @property {string} options.host - Server host (default: '127.0.0.1')
  * @property {number} options.port - Server port (default: 8080)
@@ -46,10 +46,10 @@ const { COLORS } = require('../../../utils/ansiColors.cjs');
 class ModelDownloadServerManager {
   constructor(options = {}) {
     this.options = {
-      pythonPath: options.pythonPath || 'scry_pkg',
+      pythonPath: options.pythonPath || 'action_zone',
       scriptPath:
         options.scriptPath ||
-        path.join(__dirname, '..','fullpy', 'scry_pkg', 'scry_sse', 'download_model.py'),
+        path.join(__dirname, '..','fullpy', 'action_zone', 'action_sse', 'download_model.py'),
       host: options.host || '127.0.0.1',
       port: options.port || 8080,
       timeout: options.timeout || 90000,

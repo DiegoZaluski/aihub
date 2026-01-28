@@ -24,7 +24,7 @@ import MessageInput from './MessageInput';
 import ResBox from './ResBox';
 import { useLlama } from '../../../hooks/useLlama';
 import { AppContext } from '../../../global/AppProvider';
-import SideOption from './SideOption';
+// import SideOption from './SideOption';
 import Header from '@/components/shared/header/Header';
 import { COLORS } from './ct-styles'
 
@@ -114,7 +114,6 @@ const Chat = ({ adaptable, newWindow }: { adaptable: AdaptableProps; newWindow?:
       ${adaptable ? 'h-full' : newWindow ? 'h-full rounded-xl' : 'h-screen'}
     `}
     >
-      {adaptable || newWindow ? null : <SideOption />}
       {adaptable || newWindow ? null : <Header isChat={true} />}
 
       <div
@@ -175,7 +174,7 @@ const Chat = ({ adaptable, newWindow }: { adaptable: AdaptableProps; newWindow?:
         `}
           style={{ backgroundColor: COLORS.BACKGROUND }}
         >
-          <span>hunglab&trade;</span>
+          <span>aihub&trade;</span>
         </footer>
       )}
     </div>

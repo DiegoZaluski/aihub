@@ -7,8 +7,8 @@ from llama_cpp import Llama, LlamaCache
 from typing import List, Dict, Optional, Set
 from get_prompt_system import get_prompt_system
 from websockets.exceptions import ConnectionClosedOK
-from scry_pkg.scry_sqlite.control_config import ControlConfig
-from scry_pkg.scry_ws import MODEL_PATH, CHAT_FORMAT, logger, FALLBACK_PORTS_WEBSOCKET, NAME_OF_MODEL, PROMPT_SYSTEM_PATH
+from action_zone.action_sqlite.control_config import ControlConfig
+from action_zone.action_ws import MODEL_PATH, CHAT_FORMAT, logger, FALLBACK_PORTS_WEBSOCKET, NAME_OF_MODEL, PROMPT_SYSTEM_PATH
 
 CONTEXT_SIZE = 8000
 
@@ -183,7 +183,7 @@ class LlamaChatServer:
             return
 
         self.active_prompts.add(prompt_id)
-        asyncio.create_task(self.router(data, prompt_id, prompt_text, session_id, websocket))
+        asyncio.create_task(self.handle_prompt(prompt_id, prompt_text, prompt_text, websocket))
         await websocket.send(json.dumps({"promptId": prompt_id, "sessionId": session_id, "status": "started", "type": "started"}))
 
     async def _handle_cancel_action(self, websocket, data):
@@ -207,27 +207,6 @@ class LlamaChatServer:
         except Exception as e:
             logger.error(f"Could not send error message: {e}")
 
-    async def bridges(self, data, promptId, promptText, sessionId, websocket):
-        # Specialized processing (search or thinking)
-        from scry_pkg.scry_tools.search.run_search import RunSearch
-        try:
-            search_code = data.get("search", 100)
-            think_flag = data.get("think", False)
-
-            if search_code in (200, 300):
-                response = RunSearch()._search(promptText)
-            else:
-                response = f"Thinking analysis for: {promptText}" if think_flag else f"Chat response to: {promptText}"
-                if search_code == 100:
-                    self.get_session_history(sessionId).append({"role": "user", "content": promptText})
-                    self.get_session_history(sessionId).append({"role": "assistant", "content": response})
-
-            await websocket.send(json.dumps({"promptId": promptId, "token": response, "type": "token"}))
-            await websocket.send(json.dumps({"promptId": promptId, "complete": True, "type": "complete"}))
-        except Exception as e:
-            logger.error(f"Bridge error: {e}")
-            await websocket.send(json.dumps({"promptId": promptId, "error": f"Processing failed: {e}", "type": "error"}))
-
     def _updateSystemPrompt(self, session_id, new_prompt):
         # Update system prompt for a session
         if session_id in self.session_history:
@@ -236,15 +215,6 @@ class LlamaChatServer:
                     msg["content"] = new_prompt
                     return
             self.session_history[session_id].insert(0, {"role": "system", "content": new_prompt})
-
-    def router(self, data, promptId, promptText, sessionId, websocket):
-        # Route between standard chat and bridges
-        searchCode = data.get("search", 100)
-        thinkFlag = data.get("think", False)
-        if searchCode == 100 and not thinkFlag:
-            return self.handle_prompt(promptId, promptText, sessionId, websocket)
-        return self.bridges(data, promptId, promptText, sessionId, websocket)
-
 
 async def main():
     logger.info("Initializing LLaMA model...")

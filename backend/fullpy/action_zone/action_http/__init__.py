@@ -1,4 +1,4 @@
-from scry_pkg.utils import setup_logging
+from action_zone.utils import setup_logging
 # LOGGING CONFIGURATION
 logger = setup_logging('HTTP_Server')
 

@@ -1,6 +1,6 @@
-from scry_pkg.scry_http import logger
+from action_zone.action_http import logger
 from fastapi import APIRouter, HTTPException
-from scry_pkg.scry_sqlite.control_config import ControlConfig
+from action_zone.action_sqlite.control_config import ControlConfig
 
 configs_routers = APIRouter(prefix="/configs")
 
