@@ -1,31 +1,31 @@
-import { useContext} from 'react';
+import { useContext } from 'react';
 import { AppContext } from '../../../global/AppProvider';
 import HeaderTabs from './HeaderTabs';
 import StatusBox from './StatusBox';
-import ButtonTheme from '../buttons/ButtonTheme';
+// import ButtonTheme from '../buttons/ButtonTheme';
 import { MinimizeBtn, MaximizeBtn, CloseBtn, BackBtn } from '../buttons/CtrlWindow';
 import ButtonI18n from '../buttons/ButtonI18n';
-import { SiHuggingface as Huggingface } from 'react-icons/si';
-
-enum color {
-  yllow = 'text-yellow-500'
-}
 
 interface headerProps {
   isHome?: boolean;
   isChat?: boolean;
 }
+
 function Header({ isHome = false, isChat = false }: headerProps) {
   const appContext = useContext(AppContext);
+
   if (!appContext) throw new Error('The header should be used within the AppProvider');
+
   const { isDark } = appContext;
   const theme = isDark ? 'white' : 'black';
   const stroke = isHome ? theme : isChat ? 'white' : theme;
+
   return (
     <header
       className={`
-      w-full h-20 px-8 bg-n-900 shadow-2xl 
-      sticky top-0 z-50 transition-colors duration-200 drag-handle`}
+        w-full h-20 px-8 bg-n-900 shadow-2xl 
+        sticky top-0 z-50 transition-colors duration-200 drag-handle
+      `}
     >
       <div className="h-full grid grid-cols-3 items-center">
         {isHome ? (
@@ -33,18 +33,24 @@ function Header({ isHome = false, isChat = false }: headerProps) {
         ) : (
           <div
             className="
-          justify-self-start ml-4 transform translate-x-8 
-          flex items-center space-x-4"
+              justify-self-start ml-4 transform translate-x-8 
+              flex items-center space-x-4
+            "
           >
             <BackBtn stroke={isChat ? 'white' : isDark ? 'white' : 'black'} />
           </div>
         )}
+
         {isHome ? (
           <div
-            className="justify-self-center flex items-center 
-        space-x-2 flex-row"
+            className="
+              justify-self-center flex items-center 
+              space-x-2 flex-row
+            "
           >
-            <Huggingface size={36} className={`${'text-white/50'}`}/>
+            <span className="text-4xl brightness-0/50">
+              🦙
+            </span>
           </div>
         ) : (
           <div className="justify-self-center flex items-center space-x-2 flex-row w-full h-16"></div>

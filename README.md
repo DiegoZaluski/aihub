@@ -1,20 +1,18 @@
-# 🧬 aihub (v0.0.1 - Alpha)
+# 🦙 ellama (v0.0.1 - Alpha)
 
-**aihub** is a local sandbox designed for testing and managing **GGUF models**. It offers a clean, straightforward interface to download, switch, and experiment with local AI models, giving you full control over parameters and model management.
+**ellama** is an Electron-based desktop application designed as a user-friendly interface for running **llama.cpp**. It allows you to download GGUF models directly from Hugging Face, control llama.cpp project parameters, and manage memory efficiency—all through an intuitive GUI.
 
 ---
 
 ## 🚀 About the Project
-Currently in its early alpha stage, the project is focused on making local AI experimentation easier for everyone.
+Currently in its alpha stage, the focus is to simplify local AI experimentation by removing the complexity of the command line.
 
-### ✨ The Vision (Future Goals)
-While we are starting small, here is what’s on the horizon:
-- **Smarter RAG:** Improved response handling using external source files.
-- **Study-Focused UI:** An interface designed to support academic research with visual aids.
-- **Audio Support:** Integrated text-to-audio descriptions.
-- **HF Search:** Direct Hugging Face integration to find and download GGUF models faster.
-- **Wider Support:** Compatibility with more local model formats.
-- **Refinement:** Once the core is stable, I'll be stripping away the overhead to make the app even lighter.
+### ✨ Features & Vision
+- **llama.cpp Interface:** Full control over inference parameters and project settings.
+- **Hugging Face Integration:** Easy search and download of GGUF models.
+- **Memory Management:** Built-in functions to save and optimize system resource usage.
+- **Smarter RAG:** Future support for reading external files and data sources.
+- **Audio Support:** Plans for integrated text-to-audio descriptions.
 
 > [!TIP]
 > **Have a great idea?** Suggestions are always welcome! Feel free to contribute and help shape the project.
@@ -23,31 +21,25 @@ While we are starting small, here is what’s on the horizon:
 
 ## 🛠️ Setup & Configuration
 
-### 1. Requirements & Recommendations
-* **Node.js Versions:**
-    * **Windows:** v22.12.0
-    * **POSIX (Linux/macOS):** v22.21.0
-* **Housekeeping:** Delete `package-lock.json` and `npm-shrinkwrap.json` if they are already in your folder before starting.
-* **Storage (Windows):** It is highly recommended to keep the project **outside of OneDrive** to avoid sync issues.
+### 1. Requirements
+* **Node.js:** v22.12.0 (Windows) or v22.21.0 (POSIX).
+* **Important:** Keep the project outside of OneDrive on Windows to avoid synchronization conflicts.
 
 ### 2. Main Installation
 ```bash
 # Clone the repository
-cd huglab
-git clone https://github.com/ggml-org/llama.cpp
-git clone https://github.com/moltbot/moltbot
+git clone [https://github.com/ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)
 
 # Install dependencies
 npm install
 ```
-> **Note:** Dependency management can be a bit finicky. If you run into version conflicts, you might need to update specific packages manually.
 
-### 3. Backend Setup
-Head into the `backend/fullpy` folder and set up your Python environment:
+### 3. Backend Setup & Refactoring Note
+Navigate to the `backend/fullpy` folder and set up your Python environment:
 ```bash
 cd backend/fullpy
 
-# Create a virtual environment (venv)
+# Create venv
 python -m venv venv
 
 # Activate and install
@@ -55,47 +47,32 @@ python -m venv venv
 pip install -r requirements.txt
 pip install -e .
 ```
-## important
-Install a gguf model in: [llama.cpp models](llama.cpp/models) and then add the model name in: [model.json](backend/config/current_model.json)
 
-(***Don't forget to compile llama.cpp.***)
+> [!WARNING]  
+> **Python Refactoring:** The current Python backend was a temporary choice made to quickly test the model. In the future, Python will be completely removed from the project to improve performance and simplify the distribution of the executable.
 
 ---
-
-## ⚡ REBILLING CHALLENGE 
-
-**Challenge:**
-Completely replace Python from the project with Go and C++.
-
-**Reason:**
-Simplify when building the project executable, improved performance, and scaling a lighter and more performant project.
 
 ## 📁 Project Structure
 
 ```text
 huglab/
 ├── backend/
-│   ├── config/            # Backend configurations  
-│   ├── fullpy/            # Main Python logic  
-│   ├── rulers/            # Validation rules and logic  
-│   └── second-window/     # Secondary window management  
+│   ├── config/            # Backend configurations (model.json)
+│   ├── fullpy/            # Current Python logic (To be removed)
+│   └── ...                # Validation rules and window management
 ├── frontend/
-│   ├── components/        # Reusable React components  
-│   ├── global/            # Global styles and configurations  
-│   ├── hooks/             # Custom React hooks  
-│   ├── i18n/              # Internationalization and languages  
-│   ├── style/             # CSS and styling  
-│   ├── App.jsx            # Main application component  
-│   └── main.jsx           # Entry point  
-├── electron /
-|    ├── ipc/              # Inter-process communication  
-|    ├── track/            # functions for conditional in main.cjs   
-├── public/                # Static assets  
-├── utils/                 # Shared helper functions  
-└── (other configuration files)
+│   ├── components/        # Reusable React components
+│   ├── App.jsx            # Main application component
+│   └── main.jsx           # Entry point
+├── electron/
+│   ├── ipc/               # Inter-process communication
+│   └── track/             # Conditional functions for main.cjs
+├── public/                # Static assets
+└── utils/                 # Shared helper functions
 ```
 
 ---
 
 ## 🗺️ ROADMAP
-A dedicated space to track progress, pick up open tasks, or plan new features.
+A dedicated space to track progress, open tasks, and plan new features.

@@ -173,7 +173,7 @@ const Chat = ({ adaptable, newWindow }: { adaptable: AdaptableProps; newWindow?:
           text-sm
         `}
         >
-          <span>aihub&trade;</span>
+          <span>ellama&trade;</span>
         </footer>
       )}
     </div>

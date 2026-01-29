@@ -56,3 +56,6 @@ cmake --build . --config Release -j$(nproc)
 molt-bot commads 
 
 pnpm start configure 
+pnpm start channels login --verbose
+rm -rf ~/.clawdbot/
+
